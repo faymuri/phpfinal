@@ -164,22 +164,22 @@ if (isset($insertar))
        else
           print (">\n");
        if ($errores["nombre_producto"] != "")
-          print ("<BR><SPAN CLASS='error'>" . $errores["nombre"] . "</SPAN>");
+          print ("<BR><SPAN CLASS='error'>" . $errores["nombre_producto"] . "</SPAN>");
     ?>
  <P>
        
 </P>
     <!-- apellido -->
-    <P><LABEL>Apellido: *</LABEL>
-    <INPUT TYPE="TEXT" NAME="apellido" SIZE="30" MAXLENGTH="50">
+    <P><LABEL>Tipo : *</LABEL>
+    <INPUT TYPE="TEXT" NAME="tipo_producto" SIZE="30" MAXLENGTH="50">
     
     <?PHP
        if (isset($insertar))
-          print ("VALUE='$apellido'>\n");
+          print ("VALUE='$tipo_producto'>\n");
        else
           print (">\n");
-       if ($errores["apellido"] != "")
-          print ("<BR><SPAN CLASS='error'>" . $errores["apellido"] . "</SPAN>");
+       if ($errores["tipo_producto"] != "")
+          print ("<BR><SPAN CLASS='error'>" . $errores["tipo_producto"] . "</SPAN>");
     ?>
     </div>
  <P>
@@ -187,14 +187,14 @@ if (isset($insertar))
 <div class="bloque2">
  <!-- aspiraciones-->
  <div class="eleccion1">
- <LABEL>Aspiraciones: *</LABEL>
+ <LABEL>descripcion: *</LABEL>
 <TEXTAREA COLS="35" ROWS="3" NAME="aspiraciones">
 <?PHP
    if (isset($insertar))
-      print ("$aspiraciones");
+      print ("$descripcion_producto");
    print ("</TEXTAREA>");
-   if ($errores["aspiraciones"] != "")
-      print ("<BR><SPAN CLASS='error'>" . $errores["aspiraciones"] . "</SPAN>");
+   if ($errores["descripcion_producto"] != "")
+      print ("<BR><SPAN CLASS='error'>" . $errores["descripcion_producto"] . "</SPAN>");
 ?>
 </P>
 </div>
@@ -209,13 +209,6 @@ if (isset($insertar))
    if ($errores["eleccion_escuela"] != "")
       print ("<BR><SPAN CLASS='error'>" . $errores["eleccion_escuela"] . "</SPAN>");
 ?>
-</P>
-</div>
-<div class="bloque3">
-<!-- Imagen asociada a la noticia -->
-<P><LABEL>Imagen:</LABEL>
-<INPUT TYPE="HIDDEN" NAME="MAX_FILE_SIZE" VALUE="2000000">
-<INPUT TYPE="FILE" SIZE="44" NAME="imagen">
 
 <?PHP
    if ($errores["imagen"] != "")
@@ -223,7 +216,7 @@ if (isset($insertar))
 ?>
 </P>
 <!-- Botón de envío -->
-<P><button type='submit' class='btn btn-outline-success' NAME="insertar">Insertar datos</button></P>
+<P><button type='submit' class='btn btn-outline-success' NAME="insertar">Insertar productos</button></P>
 
 </FORM>
 

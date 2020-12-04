@@ -89,7 +89,7 @@ if (isset($usuario) && isset($clave))
       print ("<P ALIGN='CENTER'>Acceso no autorizado</P>\n");
       
       print ("<P ALIGN='CENTER'><a class='btn btn-primary' href='ingreso.php' role='button'>Conectar</a></P>\n");
-*
+
    }
 
    else
