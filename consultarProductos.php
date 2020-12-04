@@ -7,7 +7,7 @@
 <HTML>
 
 <HEAD>
-   <TITLE>Gestión de datos - Consulta de datos</TITLE>
+   <TITLE>Gestión de productos - consulatr productos</TITLE>
    <!-- Bootstrap -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
@@ -35,7 +35,7 @@
 <?PHP
 
    // Enviar consulta
-   $instruccion = "SELECT * FROM datos";
+   $instruccion = "SELECT * FROM productos";
    $consulta = mysqli_query ($conexion, $instruccion)
       or die ("Fallo en la consulta");
 
@@ -46,10 +46,9 @@
          print ("<div class='table-responsive-sm'>");
          print ("<TABLE class='table table-striped table-hover'>\n");
          print ("<TR class='table-danger'>\n");
-         print ("<TH>nombre</TH>\n");
-         print ("<TH>apellido</TH>\n");
-         print ("<TH>aspiraciones</TH>\n");
-         print ("<TH>eleccion de escuela</TH>\n");
+         print ("<TH>Nombre de producto</TH>\n");
+         print ("<TH>Tipo de producto</TH>\n");
+         print ("<TH>Descripcion del producto</TH>\n");
          print ("<TH>Imagen</TH>\n");
          print ("</TR>\n");
 
@@ -57,10 +56,10 @@
          {
             $resultado = mysqli_fetch_assoc ($consulta);
             print ("<TR>\n");
-            print ("<TD>" . $resultado['nombre'] . "</TD>\n");
-            print ("<TD>" . $resultado['apellido'] . "</TD>\n");
-            print ("<TD>" . $resultado['aspiraciones'] . "</TD>\n");
-            print ("<TD>" . $resultado['eleccion_escuela'] . "</TD>\n");
+            print ("<TD>" . $resultado['nombre_producto'] . "</TD>\n");
+            print ("<TD>" . $resultado['tipo_producto'] . "</TD>\n");
+            print ("<TD>" . $resultado['descripcion_producto'] . "</TD>\n");
+            
 
             if ($resultado['foto'] != "")
                print ("<TD><A TARGET='_blank' HREF='img/" . $resultado['foto'] .
@@ -75,7 +74,7 @@
          print ("</div>\n");
       }
       else
-         print ("No hay datos de estudiantes  disponibles");
+         print ("No hay datos de productos disponibles");
 
 // Cerrar conexión
    mysqli_close ($conexion);

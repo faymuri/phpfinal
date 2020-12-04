@@ -8,7 +8,7 @@
 ?>
 <HTML LANG="es">
 <HEAD>
-   <TITLE> Inserción de productos</TITLE>
+   <TITLE> Compras a proveedores</TITLE>
    <!-- Bootstrap -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
@@ -32,10 +32,11 @@
 
 <?PHP
 // Obtener valores introducidos en el formulario
-$insertar = $_REQUEST['insertar']
-$nombre_producto = $_REQUEST['nombre_producto'];
-$tipo_producto = $_REQUEST['tipo_producto'];
-$descripcion_producto = $_REQUEST['descripcion_producto'];
+$insertar = $_REQUEST['insertar'];
+$idproductos = $_REQUEST['idproductos'];
+$idproveedores = $_REQUEST['idproveedores'];
+$precio_compra = $_REQUEST['precio_compra'];
+$cantidad_compra = $_REQUEST['cantidad_compra'];
 //--------------
 
 $error = false;
@@ -43,34 +44,42 @@ if (isset($insertar))
 {
     // Comprobar que se han introducido todos los datos obligatorios
    // nombre
-   if (trim($nombre_producto) == "")
+   if (trim($idproductos) == "")
    {
-      $errores["nombre_producto"] = "¡Debe introducir el nombre del producto";
+      $errores["idproductos"] = "¡Debe introducir el nombre del producto";
       $error = true;
    }
    else
-      $errores["nombre_producto"] = "";
+      $errores["idproductos"] = "";
 
 // apellido
-   if (trim($tipo_producto) == "")
+   if (trim($idproveedores) == "")
    {
-      $errores["tipo_producto"] = "¡Debe introducir el tipo de producto!";
+      $errores["idproveedores"] = "¡Debe introducir el tipo de producto!";
       $error = true;
    }
    else
-      $errores["tipo_producto "] = "";
+      $errores["idproveedores"] = "";
 
   // aspiraciones
-   if (trim($descripcion_producto) == "")
+   if (trim($precio_compra) == "")
    {
-      $errores["descripcion_producto"] = "¡Debe introducir la descrpsion del producto!";
+      $errores["precio_compra"] = "¡Debe introducir la descrpsion del producto!";
       $error = true;
    }
    else
-      $errores["descripcion_producto"] = "";
+      $errores["precio_compra"] = "";
 
-      // Subir fichero
-      $copiarFichero = false;
+      if (trim($cantidad_compra) == "")
+      {
+         $errores["cantidad_compra"] = "¡Debe introducir la descrpsion del producto!";
+         $error = true;
+      }
+      else
+         $errores["cantidad_compra"] = "";
+   
+         // Subir fichero
+         $copiarFichero = false;
 
    // Copiar fichero en directorio de ficheros subidos
    // Se renombra para evitar que sobreescriba un fichero existente
@@ -90,53 +99,31 @@ if (isset($insertar))
          }
       }
       // El fichero introducido supera el límite de tamaño permitido
-      else if ($_FILES['imagen']['error'] == UPLOAD_ERR_FORM_SIZE)
-      {
-      	 $maxsize = $_REQUEST['MAX_FILE_SIZE'];
-         $errores["imagen"] = "¡El tamaño del fichero supera el límite permitido ($maxsize bytes)!";
-         $error = true;
-      }
-   // No se ha introducido ningún fichero
-      else if ($_FILES['imagen']['name'] == "")
-         $nombreFichero = '';
-   // El fichero introducido no se ha podido subir
-      else
-      {
-         $errores["imagen"] = "¡No se ha podido subir el fichero!";
-         $error = true;
-      }
-   }
+    
    // Si los datos son correctos, procesar formulario
    if (isset($insertar) && $error==false)
    {
 
      
-      $instruccion = "INSERT INTO productos (nombre_producto,tipo_producto,descripcion_producto,foto) values ('$nombre_producto', '$tipo_producto', '$descripcion_producto', '$nombreFichero')";
+      $instruccion = "INSERT INTO compras (idproductos,idproveedores,precio_compra,cantidad_compra) values ( '$idproductos', '$idproveedores', '$precio_compra','$cantidad_compra')";
       $consulta = mysqli_query ($conexion, $instruccion)
          or die ("Fallo en la consulta");
       mysqli_close ($conexion);
 
    // Mover fichero de imagen a su ubicación definitiva
-      if ($copiarFichero)
-         move_uploaded_file ($_FILES['imagen']['tmp_name'],
-         $nombreDirectorio . $nombreFichero);
-
           // Mostrar datos introducidos
-      print ("<H1>Gestión de productos</H1>\n");
-      print ("<H2>Resultado de la insercion de productos</H2>\n");
+      print ("<H1>Gestión de compras</H1>\n");
+      print ("<H2>Resultado de la compra</H2>\n");
 
-      print ("<P>los producctos han sido recibidos correctamente:</P>\n");
+      print ("<P>la compra se ha resibido correctamente:</P>\n");
       print ("<UL>\n");
-      print ("   <LI>nombre: " . $nombre_producto. "\n");
-      print ("   <LI>apellido: " . $tipo_producto . "\n");
-      print ("   <LI>aspiraciones: " . $descripcion_producto . "\n");
-      if ($nombreFichero != "")
-         print ("   <LI>Imagen: <A TARGET='_blank' HREF='" . $nombreDirectorio . $nombreFichero . "'>" . $nombreFichero . "</A>\n");
-      else
-         print ("   <LI>Imagen: (no hay)\n");
-      print ("</UL>\n");
+      print ("   <LI>id productos: " . $idproductos. "\n");
+      print ("   <LI>id proveedores: " . $idproveedores . "\n");
+      print ("   <LI>precio de la compra: " . $precio_compra . "\n"); 
+      print ("   <LI>cantidad de la compra: " . $$cantidad_compra . "\n");
+      
 
-      print ("<P><a class='btn btn-success' href='comprasProveedores.php' role='button'>Insertar otros productos</a> | ");
+      print ("<P><a class='btn btn-success' href='compras.php' role='button'>Insertar otra compra</a> | ");
       print ("<a class='btn btn-primary' href='ingreso.php' role='button'>Menú principal</a></P>\n");
 
    }
@@ -147,39 +134,39 @@ if (isset($insertar))
 
     
     
-    <H1 class="titulo4">Insertar nuevos productos</H1>
+    <H1 class="titulo4">Insertar nueva compra</H1>
 
     <div id="formularioinsertar" class=container>
-    <FORM CLASS="borde" ACTION="comprasProveedores.php" NAME="insertar" METHOD="POST"
+    <FORM CLASS="borde" ACTION="compras.php" NAME="insertar" METHOD="POST"
        ENCTYPE="multipart/form-data">
 </P>
     <!-- nombre -->
        <div class="bloque1"> 
-    <P><LABEL>Nombre: *</LABEL>
-    <INPUT TYPE="TEXT" NAME="nombre_producto" SIZE="30" MAXLENGTH="50">
+    <P><LABEL>id producto: *</LABEL>
+    <INPUT TYPE="TEXT" NAME="idproductos" SIZE="30" MAXLENGTH="50">
     
     <?PHP
        if (isset($insertar))
-          print ("VALUE='$nombre_producto'>\n");
+          print ("VALUE='$idproductos'>\n");
        else
           print (">\n");
-       if ($errores["nombre_producto"] != "")
-          print ("<BR><SPAN CLASS='error'>" . $errores["nombre_producto"] . "</SPAN>");
+       if ($errores["idproductos"] != "")
+          print ("<BR><SPAN CLASS='error'>" . $errores["idproductos"] . "</SPAN>");
     ?>
  <P>
        
 </P>
     <!-- apellido -->
-    <P><LABEL>Tipo : *</LABEL>
+    <P><LABEL>id proveedores : *</LABEL>
     <INPUT TYPE="TEXT" NAME="tipo_producto" SIZE="30" MAXLENGTH="50">
     
     <?PHP
-       if (isset($insertar))
-          print ("VALUE='$tipo_producto'>\n");
+       if (isset($idproveedores))
+          print ("VALUE='$idproveedores'>\n");
        else
           print (">\n");
-       if ($errores["tipo_producto"] != "")
-          print ("<BR><SPAN CLASS='error'>" . $errores["tipo_producto"] . "</SPAN>");
+       if ($errores["idproveedores"] != "")
+          print ("<BR><SPAN CLASS='error'>" . $errores["idproveedores"] . "</SPAN>");
     ?>
     </div>
  <P>
@@ -188,7 +175,7 @@ if (isset($insertar))
  <!-- aspiraciones-->
  <div class="eleccion1">
  <LABEL>descripcion: *</LABEL>
-<TEXTAREA COLS="35" ROWS="3" NAME="aspiraciones">
+<TEXTAREA COLS="35" ROWS="3" NAME="descripcion_producto">
 <?PHP
    if (isset($insertar))
       print ("$descripcion_producto");
@@ -198,17 +185,17 @@ if (isset($insertar))
 ?>
 </P>
 </div>
+<div class="bloque3">
+<!-- Imagen asociada a la noticia -->
+<P><LABEL>Imagen:</LABEL>
+<INPUT TYPE="HIDDEN" NAME="MAX_FILE_SIZE" VALUE="2000000">
+<INPUT TYPE="FILE" SIZE="44" NAME="imagen">
 
- <!-- eleccion de escuela-->
- <LABEL class="eleccion">Eleccion de  la escuela: *</LABEL>
-<TEXTAREA COLS="35" ROWS="3" NAME="eleccion_escuela">
 <?PHP
-   if (isset($insertar))
-      print ("$eleccion_escuela");
-   print ("</TEXTAREA>");
-   if ($errores["eleccion_escuela"] != "")
-      print ("<BR><SPAN CLASS='error'>" . $errores["eleccion_escuela"] . "</SPAN>");
+   if ($errores["imagen"] != "")
+      print ("<BR><SPAN CLASS='error'>" . $errores["imagen"] . "</SPAN>");
 ?>
+ <!-- eleccion de escuela-->
 
 <?PHP
    if ($errores["imagen"] != "")
@@ -247,5 +234,3 @@ if (isset($insertar))
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </BODY>
 </HTML>
-
-

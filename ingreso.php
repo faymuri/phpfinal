@@ -70,9 +70,10 @@ if (isset($usuario) && isset($clave))
     <HR>
     
     <UL>
-       <LI><A HREF="ComprasProveedores.php" class="text-dark">Compras a proveedores</A> 
-       <LI><A HREF="Ventas.php" class="text-dark">Registro de ventas </A>
-       <LI><A HREF="eliminar_datos.php" class="text-dark">Eliminar estudiantes</A>
+       <LI><A HREF="ingresoProducto.php" class="text-dark">ingresar productos</A> 
+       <LI><A HREF="consultarProductos.php" class="text-dark">ver listado de productos o servicios</A>
+       <LI><A HREF="compras.php" class="text-dark">Compras a proveedores</A>
+       <LI><A HREF="eliminarProductos.php" class="text-dark">Eliminar productos o servicios</A>
    
     </UL>
     

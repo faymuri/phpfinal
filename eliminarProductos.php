@@ -8,7 +8,7 @@
 <HTML LANG="es">
 
 <HEAD>
-   <TITLE>Gestión de noticias - Eliminación de datos</TITLE>
+   <TITLE>Gestión de productoss - Eliminación de productos</TITLE>
    <!-- Bootstrap -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
@@ -32,7 +32,7 @@
    {
 ?>
 
-<H1>Eliminar estudiantes</H1>
+<H1>Eliminar productos</H1>
 
 <?PHP
 
@@ -50,7 +50,7 @@
       {
 
       // Obtener datos de la noticia i-ésima
-         $instruccion = "SELECT * FROM datos WHERE id = $borrar[$i]";
+         $instruccion = "SELECT * FROM productos WHERE idproductos = $borrar[$i]";
          $consulta = mysqli_query ($conexion, $instruccion)
             or die ("Fallo en la consulta");
          $resultado = mysqli_fetch_assoc ($consulta);
@@ -58,18 +58,18 @@
       // Mostrar datos de la noticia i-ésima
          print ("datos eliminados:\n");
          print ("<UL>\n");
-         print ("   <LI>nombre: " . $resultado['nombre']);
-         print ("   <LI>apellido: " . $resultado['apellido']);
-         print ("   <LI>aspiraciones: " . $resultado['aspiraciones']);
-         print ("   <LI>eleccion de la escuela: " . $resultado['eleccion_escuela']);
+         print ("   <LI>Nombre de producto: " . $resultado['nombre_producto']);
+         print ("   <LI>Tipo de producto: " . $resultado['tipo_producto']);
+         print ("   <LI>Descripcion de porducto: " . $resultado['descripcion_producto']);
+      
          if ($resultado['imagen'] != "")
             print ("   <LI>Imagen: " . $resultado['imagen']);
          else
             print ("   <LI>Imagen: (no hay)");
          print ("</UL>\n");
 
-      // Eliminar noticia
-         $instruccion = "DELETE FROM datos WHERE id = $borrar[$i]";
+      // Eliminar productos
+         $instruccion = "DELETE FROM productos WHERE idproductos = $borrar[$i]";
          $consulta = mysqli_query ($conexion, $instruccion)
             or die ("Fallo en la eliminación");
 
@@ -81,12 +81,12 @@
          }
 
       }
-      print ("<P>Número total de datos eliminadas: " . $nfilas . "</P>\n");
+      print ("<P>Número total de productos eliminados: " . $nfilas . "</P>\n");
 
    // Cerrar conexión
       mysqli_close ($conexion);
 
-      print ("<P><a class='btn btn-danger' href='eliminar_datos.php' role='button'>Eliminar más datos?</a> | ");
+      print ("<P><a class='btn btn-danger' href='eliminarProductos.php' role='button'>Eliminar más datos?</a> | ");
       print ("<a class='btn btn-primary' href='ingreso.php' role='button'>Menú principal</a></P>\n");
 
 
@@ -96,7 +96,7 @@
 
 
    // Enviar consulta
-      $instruccion = "SELECT * from datos order by nombre desc";
+      $instruccion = "SELECT * from productos order by tipo_producto desc";
       $consulta = mysqli_query ($conexion, $instruccion)
          or die ("Fallo en la consulta");
 
@@ -104,14 +104,13 @@
       $nfilas = mysqli_num_rows ($consulta);
       if ($nfilas > 0)
       {
-         print ("<FORM ACTION='eliminar_datos.php' METHOD='post'>\n");
+         print ("<FORM ACTION='eliminarProductos.php' METHOD='post'>\n");
          print ("<div class='table-responsive-sm'>");
          print ("<TABLE class='table table-striped table-hover'>\n");
          print ("<TR class='table-danger'>\n");
-         print ("<TH>nombre</TH>\n");
-         print ("<TH>apellido</TH>\n");
-         print ("<TH>aspiraciones</TH>\n");
-         print ("<TH>eleccion de la escuela</TH>\n");
+         print ("<TH>nombre de productos</TH>\n");
+         print ("<TH>tipo de producto</TH>\n");
+         print ("<TH>descripciones de producto</TH>\n");
          print ("<TH>Imagen</TH>\n");
          print ("<TH>Borrar</TH>\n");
          print ("</TR>\n");
@@ -120,10 +119,9 @@
          {
             $resultado = mysqli_fetch_assoc ($consulta);
             print ("<TR>\n");
-            print ("<TD>" . $resultado['nombre'] . "</TD>\n");
-            print ("<TD>" . $resultado['apellido'] . "</TD>\n");
-            print ("<TD>" . $resultado['aspiraciones'] . "</TD>\n");
-            print ("<TD>" . $resultado['eleccion_escuela'] . "</TD>\n");
+            print ("<TD>" . $resultado['nombre_producto'] . "</TD>\n");
+            print ("<TD>" . $resultado['tipo_producto'] . "</TD>\n");
+            print ("<TD>" . $resultado['descripcion_producto'] . "</TD>\n");
 
             if ($resultado['imagen'] != "")
                print ("<TD><A TARGET='_blank' HREF='img/" . $resultado['imagen'] .
@@ -132,7 +130,7 @@
                print ("<TD>&nbsp;</TD>\n");
 
             print ("<TD><INPUT TYPE='CHECKBOX' NAME='borrar[]' VALUE='" .
-               $resultado['id'] . "'></TD>\n");
+               $resultado['idproductos'] . "'></TD>\n");
 
             print ("</TR>\n");
          }
@@ -141,11 +139,11 @@
          print ("</div>\n");
 
          print ("<BR>\n");
-         print ("<button type='submit' class='btn btn-outline-danger' NAME='eliminar'>Eliminar estudiantes marcados</button>\n");
+         print ("<button type='submit' class='btn btn-outline-danger' NAME='eliminar'>Eliminar productos marcados</button>\n");
          print ("</FORM>\n");
       }
       else
-         print ("No hay estudiantes disponibles");
+         print ("No hay productos disponibles");
 
    // Cerrar conexión
       mysqli_close ($conexion);
