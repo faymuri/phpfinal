@@ -1,0 +1,114 @@
+body{
+background-image: url(https://image.freepik.com/foto-gratis/moda-suave-elegante-vuelo-rosa-satinado-tela-resumen-3d-fondo-monocromo_6436-376.jpg);
+ 
+
+}
+  #login .container #login-row #login-column #login-box {
+   
+    max-width: 500px;
+    height: 320px;
+    border: 5px solid #302f2f;
+    background-color:rgba(141, 51, 153, 0.555);
+    
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -85px;
+  }
+
+#boton{
+     text-align: center;
+     margin-left: 150px;
+     position: center;
+     color: black;
+
+
+ }
+ 
+
+ .contenedor{
+     margin-top: 40px;
+    
+    
+
+ }
+
+.contenedor1{
+
+  margin-top: 40px;
+  margin-left: 180px;
+  width: 70%;
+  height: 450px;
+
+  
+}
+
+#form3{
+
+  background-color: rgba(128, 0, 128, 0.726);
+  text-align: center;
+  width: 40%;
+  border: 5px solid #302f2f;
+  
+  margin-top: 20px;
+  
+
+}
+
+#boton1{
+  margin-left:80px;
+}
+.titulo{
+
+  text-align: center;
+}
+#label{
+  margin-left: 30px;
+}
+
+.titulo4{
+  
+  padding-left:200px;
+}
+#formularioinsertar{
+
+  background-color: rgba(255, 0, 119, 0.247);
+  width: 75%;
+  height: 610px;
+  border: 5px solid #302f2f;
+
+}
+
+.bloque1{
+
+  
+  margin-top: 10px;
+  padding: 10px;
+  margin-left:105px;
+
+}
+
+.bloque2{
+
+  padding:10px;
+}
+
+
+
+.eleccion1{
+
+  margin-left: 60px;
+}  
+
+.bloque3{
+  padding-left: 120px;
+}
+
+
+
+
+
+
+
