@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2020 at 02:27 PM
+-- Generation Time: Dec 04, 2020 at 03:14 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -45,7 +45,8 @@ CREATE TABLE `productos` (
   `idproductos` int(11) NOT NULL,
   `nombre_producto` varchar(35) NOT NULL,
   `tipo_producto` varchar(15) NOT NULL,
-  `descripcion_producto` varchar(50) NOT NULL
+  `descripcion_producto` varchar(50) NOT NULL,
+  `foto` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
