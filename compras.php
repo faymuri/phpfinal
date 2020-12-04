@@ -84,21 +84,7 @@ if (isset($insertar))
    // Copiar fichero en directorio de ficheros subidos
    // Se renombra para evitar que sobreescriba un fichero existente
    // Para garantizar la unicidad del nombre se a�ade una marca de tiempo
-      if (is_uploaded_file ($_FILES['imagen']['tmp_name']))
-      {
-         $nombreDirectorio = "img/";
-         $nombreFichero = $_FILES['imagen']['name'];
-         $copiarFichero = true;
-
-      // Si ya existe un fichero con el mismo nombre, renombrarlo
-         $nombreCompleto = $nombreDirectorio . $nombreFichero;
-         if (is_file($nombreCompleto))
-         {
-            $idUnico = time();
-            $nombreFichero = $idUnico . "-" . $nombreFichero;
-         }
-      }
-      // El fichero introducido supera el límite de tamaño permitido
+     
     
    // Si los datos son correctos, procesar formulario
    if (isset($insertar) && $error==false)
@@ -158,7 +144,7 @@ if (isset($insertar))
 </P>
     <!-- apellido -->
     <P><LABEL>id proveedores : *</LABEL>
-    <INPUT TYPE="TEXT" NAME="tipo_producto" SIZE="30" MAXLENGTH="50">
+    <INPUT TYPE="TEXT" NAME="idproveedores" SIZE="30" MAXLENGTH="50">
     
     <?PHP
        if (isset($idproveedores))
@@ -174,32 +160,14 @@ if (isset($insertar))
 <div class="bloque2">
  <!-- aspiraciones-->
  <div class="eleccion1">
- <LABEL>descripcion: *</LABEL>
-<TEXTAREA COLS="35" ROWS="3" NAME="descripcion_producto">
+ <LABEL>precio compra: *</LABEL>
+<TEXTAREA COLS="35" ROWS="3" NAME="precio_compra">
 <?PHP
    if (isset($insertar))
-      print ("$descripcion_producto");
+      print ("$precio_compra");
    print ("</TEXTAREA>");
-   if ($errores["descripcion_producto"] != "")
-      print ("<BR><SPAN CLASS='error'>" . $errores["descripcion_producto"] . "</SPAN>");
-?>
-</P>
-</div>
-<div class="bloque3">
-<!-- Imagen asociada a la noticia -->
-<P><LABEL>Imagen:</LABEL>
-<INPUT TYPE="HIDDEN" NAME="MAX_FILE_SIZE" VALUE="2000000">
-<INPUT TYPE="FILE" SIZE="44" NAME="imagen">
-
-<?PHP
-   if ($errores["imagen"] != "")
-      print ("<BR><SPAN CLASS='error'>" . $errores["imagen"] . "</SPAN>");
-?>
- <!-- eleccion de escuela-->
-
-<?PHP
-   if ($errores["imagen"] != "")
-      print ("<BR><SPAN CLASS='error'>" . $errores["imagen"] . "</SPAN>");
+   if ($errores["precio_compra"] != "")
+      print ("<BR><SPAN CLASS='error'>" . $errores["precio_compra"] . "</SPAN>");
 ?>
 </P>
 <!-- Botón de envío -->
@@ -213,9 +181,7 @@ if (isset($insertar))
 </div>
 </div>
 
-<?PHP
-   }
-   ?>
+
 
 <?PHP
 
