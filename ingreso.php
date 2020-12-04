@@ -83,7 +83,7 @@ if (isset($usuario) && isset($clave))
     <?PHP
        }
        // Intento de entrada fallido
-   else if (isset ($user))
+   else if (isset ($usuario))
    {
       print ("<BR><BR>\n");
       print ("<P ALIGN='CENTER'>Acceso no autorizado</P>\n");
@@ -103,7 +103,7 @@ if (isset($usuario) && isset($clave))
                     print   ( "<h3 class='text-center text-dark'>Ingreso</h3>\n");
                     print     ("<div class='form-group'>\n");
                     print    ("<label for='username' class='text-dark'>Usuario:</label><br>\n");
-                    print     ("<input type='text' name='user' id='username' class='form-control'>\n");
+                    print     ("<input type='text' name='usuario' id='username' class='form-control'>\n");
                     print      ("</div>\n");
                     print       ("<div class='form-group'>\n");
                     print        ("<label for='password' class='text-dark'>Contraseña:</label><br>\n");
