@@ -10,17 +10,17 @@ session_start();
 
 //Si se ha enviado el formulario
 // se inicializan variables con los parametros de la tabla usuarios
-$user = $_REQUEST['user'];
+$usuario= $_REQUEST['usuario'];
 $clave = $_REQUEST['clave'];
 
-if (isset($user) && isset($clave))
+if (isset($usuario) && isset($clave))
 
      {
         // extrae  las  3 primeras letras de la informacion ingresada en el campo usuario      
-         $salt = substr ($user, 0, 3);
+         $salt = substr ($usuario, 0, 3);
          // se crea la encriptacion de la clave ingresada para hacer una contraseña segura
          $clave_crypt = crypt ($clave, $salt);
-         $instruccion = "SELECT user, clave FROM usuarios WHERE user = '$user'" .
+         $instruccion = "SELECT usuario, clave FROM usuarios WHERE usuario = '$usuario'" .
             " and clave = '$clave_crypt'";
          $consulta = mysqli_query ($conexion, $instruccion)
             or die ("Fallo en la consulta");
@@ -31,11 +31,11 @@ if (isset($user) && isset($clave))
       // Los datos introducidos son correctos
          if ($nfilas > 0)
          {
-            $usuario_valido = $user;
+            $usuario_valido = $usuario;
             $_SESSION["usuario_valido"] = $usuario_valido;
            // print ("<P>Valor de la variable de sesión: $usuario_valido</P>\n");
             echo" <script>
-                    window.alert('Bienvenido $user');
+                    window.alert('Bienvenido $usuario');
                   </script>";
          }
       }
@@ -70,8 +70,8 @@ if (isset($user) && isset($clave))
     <HR>
     
     <UL>
-       <LI><A HREF="consulta_datos.php" class="text-dark">Consultar estudiantes </A> 
-       <LI><A HREF="insertar_datos.php" class="text-dark">Insertar nuevos estudiantes</A>
+       <LI><A HREF="ComprasProveedores.php" class="text-dark">Compras a proveedores</A> 
+       <LI><A HREF="Ventas.php" class="text-dark">Registro de ventas </A>
        <LI><A HREF="eliminar_datos.php" class="text-dark">Eliminar estudiantes</A>
    
     </UL>
