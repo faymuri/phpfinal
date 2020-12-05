@@ -8,7 +8,7 @@ background-image: url(https://image.freepik.com/foto-gratis/moda-suave-elegante-
     max-width: 500px;
     height: 320px;
     border: 5px solid #302f2f;
-    background-color:rgba(141, 51, 153, 0.555);
+    background-color: rgba(167, 221, 136, 0.918);
     
   }
   #login .container #login-row #login-column #login-box #login-form {
@@ -47,7 +47,7 @@ background-image: url(https://image.freepik.com/foto-gratis/moda-suave-elegante-
 
 #form3{
 
-  background-color: rgba(128, 0, 128, 0.726);
+  background-color:  rgba(167, 221, 136, 0.918);
   text-align: center;
   width: 40%;
   border: 5px solid #302f2f;
@@ -74,7 +74,7 @@ background-image: url(https://image.freepik.com/foto-gratis/moda-suave-elegante-
 }
 #formularioinsertar{
 
-  background-color: rgba(255, 0, 119, 0.247);
+  background-color: rgba(167, 221, 136, 0.918);
   width: 75%;
   height: 610px;
   border: 5px solid #302f2f;

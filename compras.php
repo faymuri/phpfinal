@@ -185,7 +185,7 @@ if (isset($insertar))
 
 <?PHP
 
-   }
+   
    else
    {
       print ("<BR><BR>\n");
