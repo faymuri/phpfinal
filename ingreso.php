@@ -66,7 +66,7 @@ if (isset($usuario) && isset($clave))
    {
     ?>
     
-    <H1>Gestión de datos de estudiantes</H1>
+    <H1></H1>
     <HR>
     
     <UL>

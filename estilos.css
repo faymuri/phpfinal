@@ -1,5 +1,5 @@
 body{
-background-image: url(https://image.freepik.com/foto-gratis/moda-suave-elegante-vuelo-rosa-satinado-tela-resumen-3d-fondo-monocromo_6436-376.jpg);
+background-image: url();
  
 
 }
@@ -106,6 +106,16 @@ background-image: url(https://image.freepik.com/foto-gratis/moda-suave-elegante-
   padding-left: 120px;
 }
 
+#selection {
+
+  text-align: center;
+  margin: 20px;
+   
+}
+
+.content {
+  margin-top: 80px;
+}
 
 
 

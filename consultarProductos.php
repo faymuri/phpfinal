@@ -7,7 +7,7 @@
 <HTML>
 
 <HEAD>
-   <TITLE>Gestión de productos - consulatr productos</TITLE>
+   <TITLE>Gestión de productos - consultar productos</TITLE>
    <!-- Bootstrap -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
 ?>
 
 
-<H1>Consultar datos de estudiantes</H1>
+<H1>Consultar datos de productos</H1>
 
 <?PHP
 
